@@ -105,6 +105,24 @@ class cfFormDB
             return false;
         }
 
+        // cfformdb_detailテーブルのfieldカラムがvarchar(255)の場合はvarchar(191)に変更
+        $rs = db()->query(sprintf(
+            "SHOW COLUMNS FROM %s LIKE 'field'",
+            evo()->getFullTableName('cfformdb_detail')
+        ));
+        $column = db()->getRow($rs);
+        if ($column['Type'] === 'varchar(255)') {
+            db()->query(sprintf(
+                "ALTER TABLE %s MODIFY field VARCHAR(191) NOT NULL",
+                evo()->getFullTableName('cfformdb_detail')
+            ));
+            $this->data['content'] = $this->parser(
+                $this->loadTemplate('fieldmodify.tpl'),
+                $this->data
+            );
+            return false;
+        }
+
         $defaultView = isset(event()->params['defaultView']) ? event()->params['defaultView'] : 'list';
         if ($defaultView === 'csv' && !isset($_GET['mode'])) {
             $this->csv();
