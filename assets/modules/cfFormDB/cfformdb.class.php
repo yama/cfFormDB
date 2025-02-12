@@ -6,14 +6,14 @@
  * cfFormMailerで投稿された情報を記録、表示、CSV出力
  * 
  * @author		Clefarray Factory
- * @version	1.0
+ * @version	1.0.1
  * @internal	@properties  &viewFields=一覧画面で表示する項目;text; &ignoreFields=無視する項目;text; &defaultView=デフォルト画面;list;list,csv;list &sel_csv_fields=CSV出力項目を選択;list;1,0;1 &headLabels=表示や出力時のヘッダラベル<br>【書式】name|ラベル,name2|ラベル2,…;textarea;
  *
  */
 class cfFormDB
 {
     private $data;
-    private $version = '1.0';
+    private $version = '1.0.1';
     private $ignoreParams;
     private $headLabel;
 
