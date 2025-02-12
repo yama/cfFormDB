@@ -60,7 +60,7 @@ use_store_db = 1
 ブログ「網的脚本実験室」まで
 [http://www.clefarray-web.net/blog/](http://www.clefarray-web.net/blog/)
 
-または、MODxの公式日本語フォーラムでも受け付けています。
+または、MODXの公式日本語フォーラムでも受け付けています。
 
 ## ご注意、免責事項
 
