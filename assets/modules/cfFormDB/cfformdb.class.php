@@ -330,7 +330,6 @@ class cfFormDB
         $params                      = $this->data;
         $params['fields']            = implode("<br />", $fields);
         $params['site_url']          = evo()->config['site_url'];
-        $params['manager_url']       = MODX_MANAGER_URL;
         $params['mgrlog_datefr']     = 'この日付から';
         $params['mgrlog_dateto']     = 'この日付まで';
         $params['datepicker_offset'] = evo()->config['datepicker_offset'];
