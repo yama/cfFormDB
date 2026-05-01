@@ -1,20 +1,28 @@
-
-<script src="[+manager_url+]media/script/mootools/mootools.js" type="text/javascript"></script>
-<script type="text/javascript" src="[+site_url+]assets/modules/cfFormDB/datepicker.js"></script>
+<link href="[+manager_url+]media/script/air-datepicker/css/datepicker.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="[+manager_url+]media/script/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="[+manager_url+]media/script/air-datepicker/datepicker.min.js"></script>
+<script type="text/javascript" src="[+manager_url+]media/script/air-datepicker/i18n/datepicker.ja.js"></script>
 <script type="text/javascript">
-window.addEvent('domready', function() {
-	var dpOffset = [+datepicker_offset+];
-	var dpformat = "[+datetime_format+]";
-	var dayNames = [+dayNames+];
-	var monthNames = [+monthNames+];
-	new DatePicker($('start'),   {'yearOffset': dpOffset,'format':dpformat,'dayNames':dayNames,'monthNames':monthNames,'dateonly':1});
-	new DatePicker($('end'), {'yearOffset': dpOffset,'format':dpformat,'dayNames':dayNames,'monthNames':monthNames,'dateonly':1});
+jQuery(function() {
+    var options = {
+        language: 'ja',
+        timepicker: false,
+        todayButton: new Date(),
+        keyboardNav: false,
+        autoClose: true,
+        toggleSelected: false,
+        clearButton: true,
+        dateFormat: 'yyyy-mm-dd',
+        navTitles: { days: 'yyyy/mm' }
+    };
+    jQuery('#start, #end').datepicker(options);
 });
 </script>
 <div class="sectionHeader">CSV出力設定</div>
 <div class="sectionBody">
 <p>下記設定を確認し、「出力する」ボタンをクリックしてください</p>
 <form action="[+posturl+]" method="post" name="csvform" id="mutate">
+<input type="hidden" name="csrf_token" value="[+csrf_token+]" />
 <input type="hidden" name="mode" value="csv_generate" />
 <table class="grid" style="margin-bottom: 30px;">
   <thead>
@@ -36,14 +44,18 @@ window.addEvent('domready', function() {
       <th>[+mgrlog_datefr+]</th>
       <td>
         <input type="text" id="start" name="start" class="DatePicker imeoff" value="" />
-        <a onclick="document.csvform.start.value=''; return true;" style="cursor:pointer; cursor:hand"><img src="media/style/[+theme+]/images/icons/cal_nodate.gif" border="0" alt="No date" /></a>
+        <a onclick="jQuery('#start').data('datepicker') && jQuery('#start').data('datepicker').clear(); document.csvform.start.value=''; return false;" style="cursor:pointer;">
+          <img src="[+manager_url+]media/style/common/images/icons/cal_nodate.gif" border="0" alt="No date" />
+        </a>
       </td>
     </tr>
     <tr>
       <th>[+mgrlog_dateto+]</th>
       <td>
-        <input type="text" id="end" name="end" class="DatePicker imeoff" />
-        <a onclick="document.csvform.end.value=''; return true;" style="cursor:pointer; cursor:hand"><img src="media/style/[+theme+]/images/icons/cal_nodate.gif" border="0" alt="No date" /></a>
+        <input type="text" id="end" name="end" class="DatePicker imeoff" value="" />
+        <a onclick="jQuery('#end').data('datepicker') && jQuery('#end').data('datepicker').clear(); document.csvform.end.value=''; return false;" style="cursor:pointer;">
+          <img src="[+manager_url+]media/style/common/images/icons/cal_nodate.gif" border="0" alt="No date" />
+        </a>
       </td>
     </tr>
     <tr>
