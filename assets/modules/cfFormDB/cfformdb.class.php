@@ -469,7 +469,7 @@ class cfFormDB
         return "";
     }
 
-    private function loadTemplate(string $tplname): string|false
+    private function loadTemplate(string $tplname)
     {
         $filename = __DIR__ . '/' . $tplname;
         if (!file_exists($filename)) {
@@ -478,7 +478,7 @@ class cfFormDB
         return file_get_contents($filename);
     }
 
-    private function parser(string|array $tpl, array $vars = []): string
+    private function parser($tpl, array $vars = []): string
     {
         global $_style;
         if (is_array($tpl)) {
@@ -525,7 +525,7 @@ if (!function_exists('event')) {
 }
 
 if (!function_exists('postv')) {
-    function postv(string $key, mixed $default = null): mixed
+    function postv(string $key, $default = null)
     {
         return $_POST[$key] ?? $default;
     }
