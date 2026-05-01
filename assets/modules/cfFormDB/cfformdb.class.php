@@ -13,7 +13,7 @@
 class cfFormDB
 {
     private array $data;
-    private string $version = '1.0.1';
+    private string $version = '1.0.2';
     private array $ignoreParams;
     private array $headLabel;
 
