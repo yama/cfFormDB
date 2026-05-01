@@ -12,10 +12,10 @@
  */
 class cfFormDB
 {
-    private array $data;
+    private array $data = [];
     private string $version = '1.0.2';
-    private array $ignoreParams;
-    private array $headLabel;
+    private array $ignoreParams = [];
+    private array $headLabel = [];
 
     public function __construct()
     {
