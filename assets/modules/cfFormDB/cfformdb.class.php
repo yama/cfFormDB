@@ -138,7 +138,13 @@ class cfFormDB
 
         $total   = db()->count($rs);
         $count   = isset($_GET['ct'])  ? intval($_GET['ct'])  : 30;
+        if (!in_array($count, [30, 50, 100], true)) {
+            $count = 30;
+        }
         $page    = isset($_GET['cfp']) ? intval($_GET['cfp']) : 1;
+        if ($page < 1) {
+            $page = 1;
+        }
         $start   = ($page - 1) * $count;
         $maxPage = (int)ceil($total / $count);
         $pageNav = [];
