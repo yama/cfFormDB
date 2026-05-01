@@ -19,9 +19,11 @@
    - 説明： **1.0.1** cfFormMailerで送信された情報を表示・CSV出力
    - モジュールコード欄： ファイル `module.cfFormDB.php` の内容をコピー＆ペースト
 4. 「設定」タブをクリックし、「モジュール設定」欄に以下の文をコピー＆ペーストし、「パラメータ表示の更新」ボタンをクリックします。
+
    ```
    &viewFields=一覧画面で表示する項目;text;
    ```
+
 5. 「一覧画面で表示する項目」欄に、一覧表示画面で表示するフィールド名をコンマ区切りで入力します。（※任意）
    フィールド名はcfFormMailerで使用しているフィールド名となります。
    指定しない場合は、すべての項目が表示されます。
@@ -58,7 +60,7 @@ use_store_db = 1
 ## バグレポート、お問い合わせ、サポート
 
 ブログ「網的脚本実験室」まで
-[http://www.clefarray-web.net/blog/](http://www.clefarray-web.net/blog/)
+[https://www.clefarray-web.net/blog/](https://www.clefarray-web.net/blog/)
 
 または、MODXの公式日本語フォーラムでも受け付けています。
 
