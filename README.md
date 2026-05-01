@@ -1,4 +1,4 @@
-# cfFormDBマニュアル v1.0.２
+# cfFormDBマニュアル v1.0.2
 
 ## 目次
 
