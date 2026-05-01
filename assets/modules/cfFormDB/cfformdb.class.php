@@ -61,7 +61,14 @@ class cfFormDB
             return false;
         }
 
-        switch (postv('mode')) {
+        $mode = (string)postv('mode', '');
+        if ($this->requiresCsrfValidation($mode) && !$this->hasValidCsrfToken()) {
+            alert()->setError(1, '不正なリクエストです');
+            alert()->dumpError();
+            return false;
+        }
+
+        switch ($mode) {
             case "allfields":
                 $this->viewAllFields();
                 break;
@@ -84,6 +91,26 @@ class cfFormDB
 
         $this->view();
         return true;
+    }
+
+    private function requiresCsrfValidation(string $mode): bool
+    {
+        return in_array($mode, ['delete', 'create_table', 'csv_generate'], true);
+    }
+
+    private function hasValidCsrfToken(): bool
+    {
+        if (!function_exists('getCurrentCsrfToken')) {
+            return false;
+        }
+
+        $currentToken = (string)getCurrentCsrfToken();
+        $postedToken = (string)postv('csrf_token', '');
+        if ($currentToken === '' || $postedToken === '') {
+            return false;
+        }
+
+        return hash_equals($currentToken, $postedToken);
     }
 
     private function defaultAction(): bool
